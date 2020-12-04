@@ -1,10 +1,19 @@
-from pathlib import Path
+with open('./input.txt') as f:
+    text = [int(x.strip()) for x in f.readlines()]
 
-with open(Path.cwd() / 'input.txt', 'r') as f:
-    lst = [int(x.strip()) for x in f.readlines()]
+def main0():
+    return sum((x // 3) - 2 for x in text)
 
-#fuel = []
-#for mass in lst:
-#    tmp = (int(mass / 3) - 2)
-fuel = sum([int(mass / 3) - 2 for mass in lst])
-print(fuel)
+def main1():
+    total = 0
+    for x in text:
+        while x > 0:
+            x = (x // 3) - 2
+            if x > 0:
+                total += x
+
+    return total
+
+
+print(main0())
+print(main1())
