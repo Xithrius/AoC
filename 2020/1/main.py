@@ -1,7 +1,7 @@
 from pathlib import Path
 from itertools import combinations
 
-with open(Path.cwd() / 'input.txt') as f:
+with open(Path.cwd() / "input.txt") as f:
     integers = [int(x) for x in f.readlines()]
 
 for i, j, k in combinations(integers, 3):

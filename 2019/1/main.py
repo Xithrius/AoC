@@ -1,8 +1,10 @@
-with open('./input.txt') as f:
+with open("./input.txt") as f:
     text = [int(x.strip()) for x in f.readlines()]
+
 
 def main0():
     return sum((x // 3) - 2 for x in text)
+
 
 def main1():
     total = 0
