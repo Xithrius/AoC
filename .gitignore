@@ -147,3 +147,5 @@ dmypy.json
 # Visual Studio Code config folder.
 .vscode
 
+Cargo.lock
+
