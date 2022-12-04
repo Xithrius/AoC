@@ -1,42 +1,47 @@
 fn main() {
-    let f = std::fs::read_to_string("./input.txt").unwrap();
+    let file_input = include_str!("../input.txt");
 
-    let input = f
+    let input = file_input
         .trim()
         .chars()
-        .map(|c| c.to_string())
+        .map(|s| s.to_string())
         .collect::<Vec<String>>();
-
-    // println!("{:#?}", input);
 
     solution1(&input);
     solution2(&input);
 }
 
-fn solution1(lines: &[String]) {
-    let total: i32 = lines
-        .iter()
-        .map(|l| if l == "(" { 1 } else { -1 })
-        .collect::<Vec<i32>>()
-        .iter()
-        .sum();
-
-    println!("{:?}", total);
+fn solution1(a: &[String]) {
+    println!(
+        "{}",
+        a.iter().map(|l| if l == "(" { 1 } else { -1 }).sum::<i32>()
+    );
 }
 
-fn solution2(lines: &[String]) {
-    let mut total = 0;
+fn solution2(a: &[String]) {
+    println!(
+        "{:?}",
+        a.iter()
+            .map(|c| if c == "(" { 1 } else { -1 })
+            .enumerate()
+            .fold((0, 0), |(l, f), (i, c)| (
+                c + l,
+                if f == 0 && (c + l) < 0 { i } else { f }
+            ))
+    );
 
-    for (i, line) in lines.iter().enumerate() {
-        if total < 0 {
-            println!("{:?}", i);
-            return;
-        }
+    // let mut total = 0;
 
-        if line == "(" {
-            total += 1;
-        } else {
-            total -= 1;
-        }
-    }
+    // for (i, line) in lines.iter().enumerate() {
+    //     if total < 0 {
+    //         println!("{:?}", i);
+    //         return;
+    //     }
+
+    //     if line == "(" {
+    //         total += 1;
+    //     } else {
+    //         total -= 1;
+    //     }
+    // }
 }
