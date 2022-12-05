@@ -7,7 +7,6 @@ RAW_STACKS = RAW.split('\n\n')[0]
 RAW_MOVES = RAW.split('\n\n')[1]
 
 STACKS = [list(x[1::2][::2]) for x in RAW_STACKS.split('\n')][:-1]
-STACKS[0] = list(' ' * 3) + STACKS[0]
 STACKS = np.array(STACKS)
 STACKS = np.transpose(STACKS)
 STACKS = np.array([np.delete(x, np.where(x == ' ')) for x in STACKS])
