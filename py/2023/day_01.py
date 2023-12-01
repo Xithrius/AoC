@@ -6,18 +6,9 @@ def parse_raw():
     return [list(x) for x in RAW.split('\n')]
 
 DATA = parse_raw()
-print(DATA)
 
 def part_one():
-    outer = 0
-    for x in DATA:
-        inner = []
-        for j in x:
-            if j.isdigit():
-                inner.append(j)
-        outer += int(inner[0] + inner[-1])
-
-    return outer
+    return sum(map(lambda z: int(z[0] + z[-1]), [[j for j in x if j.isdigit()] for x in DATA]))
 
 
 digits = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
