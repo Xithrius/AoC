@@ -59,11 +59,11 @@ def part_two():
 
         for seed in seeds:
             for i in range(0, len(m), 2):
-                r, r0 = m[i + 1], m[i]
-                contained = r.stop > seed.start and r.start < seed.stop
+                r0, r1 = m[i + 1], m[i]
+                contained = r0.stop > seed.start and r0.start < seed.stop
                 if contained:
                     ranges = []
-                    mid = range(max(seed.start, r.start), min(seed.stop, r.stop))
+                    mid = range(max(seed.start, r0.start), min(seed.stop, r0.stop))
 
                     if mid.start > seed.start:
                         ranges.append(range(seed.start, mid.start))
@@ -73,8 +73,8 @@ def part_two():
 
                     seeds += ranges
 
-                    other = range(max(seed.start, r.start), min(seed.stop, r.stop))
-                    r2 = r0.start - r.start
+                    other = range(max(seed.start, r0.start), min(seed.stop, r0.stop))
+                    r2 = r1.start - r0.start
                     last = range(other.start + r2, other.stop + r2)
                     locations.append(last)
 
