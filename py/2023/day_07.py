@@ -2,12 +2,7 @@ from collections import Counter
 import itertools
 import aoc_lube
 
-RAW = """\
-32T3K 765
-T55J5 684
-KK677 28
-KTJJT 220
-QQQJA 483"""
+
 RAW = aoc_lube.fetch(year=2023, day=7)
 
 
@@ -96,10 +91,7 @@ def create_best_hand(card: str, p: list[str]) -> str:
 def part_two():
     p = ["A", "K", "Q", "T", "9", "8", "7", "6", "5", "4", "3", "2", "J"]
     d = sorted(
-        [
-            (hand, points, rank_type(create_best_hand(hand, p)) )
-            for hand, points in DATA
-        ],
+        [(hand, points, rank_type(create_best_hand(hand, p))) for hand, points in DATA],
         key=lambda x: x[-1],
     )
 

@@ -20,7 +20,10 @@ def part_one():
         inner = [ns]
         index = 0
         while any(x != 0 for x in inner[index]):
-            c = [inner[index][i + 1] - inner[index][i] for i in range(len(inner[index]) - 1)]
+            c = [
+                inner[index][i + 1] - inner[index][i]
+                for i in range(len(inner[index]) - 1)
+            ]
             inner.append(c)
             index += 1
         inner[-1].append(0)
@@ -32,6 +35,7 @@ def part_one():
 
     return total
 
+
 def part_two():
     total = 0
 
@@ -39,7 +43,10 @@ def part_two():
         inner = [ns]
         index = 0
         while any(x != 0 for x in inner[index]):
-            c = [inner[index][i + 1] - inner[index][i] for i in range(len(inner[index]) - 1)]
+            c = [
+                inner[index][i + 1] - inner[index][i]
+                for i in range(len(inner[index]) - 1)
+            ]
             inner.append(c)
             index += 1
         inner[-1].insert(0, 0)
